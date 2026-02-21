@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - BankApp</title>
+    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>🏦 BankApp</h2>
+            </div>
+            
+            <div class="user-info">
+                <div class="profile-section">
+                    <img id="profile-img" src="uploads/default.png" alt="Profile" class="profile-pic">
+                    <div>
+                        <h3 id="welcome">Loading...</h3>
+                        <p id="user-email"></p>
+                    </div>
+                </div>
+                <div class="balance-card">
+                    <span class="balance-label">Current Balance</span>
+                    <span class="balance-amount" id="balance">$0.00</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <button onclick="showSection('overview')" class="nav-btn active" id="nav-overview">📊 Overview</button>
+                <button onclick="showSection('transfer')" class="nav-btn" id="nav-transfer">💸 Transfer</button>
+                <button onclick="showSection('loans')" class="nav-btn" id="nav-loans">💰 Loans</button>
+                <button onclick="showSection('cards')" class="nav-btn" id="nav-cards">💳 Virtual Cards</button>
+                <button onclick="showSection('bills')" class="nav-btn" id="nav-bills">📱 Bill Payments</button>
+                <button onclick="showSection('profile')" class="nav-btn" id="nav-profile">👤 Profile</button>
+                <button onclick="showSection('history')" class="nav-btn" id="nav-history">📜 History</button>
+            </nav>
+            
+            <button onclick="logout()" class="logout-btn">🚪 Logout</button>
+        </div>
+
+        <!-- Main -->
+        <div class="main-content">
+            <!-- Overview -->
+            <div id="overview" class="content-section active">
+                <h2>Account Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-label">Total Balance</span>
+                        <span class="stat-value" id="overview-balance">$0.00</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Recent Transactions</span>
+                        <span class="stat-value" id="recent-count">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Active Cards</span>
+                        <span class="stat-value" id="active-cards">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Member Since</span>
+                        <span class="stat-value" id="member-since">-</span>
+                    </div>
+                </div>
+                
+                <h3>Recent Activity</h3>
+                <div id="recent-transactions" class="transactions-list">
+                    <p class="loading">Loading transactions...</p>
+                </div>
+            </div>
+
+            <!-- Transfer  -->
+            <div id="transfer" class="content-section">
+                <h2>Transfer Money</h2>
+                <div class="form-card">
+                    <div class="form-group">
+                        <label for="receiver">Receiver Email</label>
+                        <input type="email" id="receiver" placeholder="Enter receiver's email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="amount">Amount ($)</label>
+                        <input type="number" id="amount" min="0.01" step="0.01" placeholder="Enter amount">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="transfer-description">Description (Optional)</label>
+                        <input type="text" id="transfer-description" placeholder="What's this for?">
+                    </div>
+                    
+                    <button onclick="transfer()" class="btn-primary">Send Money</button>
+                    <div id="transfer-msg" class="message"></div>
+                </div>
+            </div>
+
+            <!-- Loans  -->
+            <div id="loans" class="content-section">
+                <h2>Loan Management</h2>
+                
+                <div class="form-card">
+                    <h3>Request a Loan</h3>
+                    <div class="form-group">
+                        <label for="loan-amount">Loan Amount ($)</label>
+                        <input type="number" id="loan-amount" min="100" max="50000" placeholder="Enter amount">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loan-purpose">Purpose</label>
+                        <select id="loan-purpose">
+                            <option value="Personal">Personal</option>
+                            <option value="Business">Business</option>
+                            <option value="Education">Education</option>
+                            <option value="Home">Home Improvement</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <button onclick="requestLoan()" class="btn-primary">Submit Request</button>
+                    <div id="loan-msg" class="message"></div>
+                </div>
+                
+                <h3>Your Loans</h3>
+                <div id="loans-list" class="loans-list">
+                    <p class="loading">Loading loans...</p>
+                </div>
+            </div>
+
+            <!-- Virtual Cards  -->
+            <div id="cards" class="content-section">
+                <h2>Virtual Cards</h2>
+                
+                <div class="form-card">
+                    <h3>Create New Card</h3>
+                    <div class="form-group">
+                        <label for="card-deposit">Initial Deposit ($) - Optional</label>
+                        <input type="number" id="card-deposit" min="0" step="0.01" placeholder="0.00">
+                    </div>
+                    <button onclick="createCard()" class="btn-primary">Create Card</button>
+                    <div id="card-msg" class="message"></div>
+                </div>
+                
+                <div id="cards-list" class="cards-grid">
+                    <p class="loading">Loading cards...</p>
+                </div>
+            </div>
+
+                <!-- Bill Payments  -->
+<div id="bills" class="content-section">
+    <h2>Bill Payments</h2>
+    
+    <div class="form-card">
+        <h3>Pay a Bill</h3>
+        <div class="form-group">
+            <label for="category-select">Category</label>
+            <select id="category-select">
+                <option value="">Select Category</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="biller-select">Biller</label>
+            <select id="biller-select" disabled>
+                <option value="">Select Biller</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="bill-email">Email Address</label>
+            <input type="email" id="bill-email" placeholder="Enter your email for bill">
+        </div>
+        
+        <div class="form-group">
+            <label for="bill-amount">Amount ($)</label>
+            <input type="number" id="bill-amount" min="1" step="0.01" placeholder="Enter amount">
+        </div>
+        
+        <button onclick="payBill()" class="btn-primary">Pay Bill</button>
+        <div id="bill-msg" class="message"></div>
+    </div>
+    
+    <h3>Recent Payments</h3>
+    <div id="bills-list" class="transactions-list">
+        <p class="loading">Loading payments...</p>
+    </div>
+</div>
+
+
+            <!-- Profile  -->
+            <div id="profile" class="content-section">
+                <h2>Profile Settings</h2>
+                
+                <div class="profile-settings">
+                    <div class="profile-picture-section">
+                        <img id="profile-img-large" src="uploads/default.png" alt="Profile" class="profile-pic-large">
+                        <h3 id="profile-name"></h3>
+                        <p id="profile-email"></p>
+                        
+                        <div class="form-group">
+                            <label for="profile-pic">Change Profile Picture</label>
+                            <input type="file" id="profile-pic" accept="image/*">
+                        </div>
+                        <button onclick="uploadProfilePic()" class="btn-secondary">Upload</button>
+                        <div id="upload-msg" class="message"></div>
+                    </div>
+                    
+                    <div class="password-reset-section">
+                        <h3>Reset Password</h3>
+                        <div class="form-group">
+                            <label for="reset-email">Email</label>
+                            <input type="email" id="reset-email" placeholder="Enter your email" value="">
+                        </div>
+                        <button onclick="requestReset()" class="btn-secondary">Request Reset PIN</button>
+                        
+                        <div id="pin-section" style="display: none; margin-top: 15px;">
+                            <div class="form-group">
+                                <label for="reset-pin">Reset PIN</label>
+                                <input type="text" id="reset-pin" placeholder="Enter 3-digit PIN" maxlength="3">
+                            </div>
+                            <div class="form-group">
+                                <label for="new-password">New Password</label>
+                                <input type="password" id="new-password" placeholder="Enter new password">
+                            </div>
+                            <button onclick="resetPassword()" class="btn-primary">Reset Password</button>
+                        </div>
+                        <div id="reset-msg" class="message"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- History  -->
+            <div id="history" class="content-section">
+                <h2>Transaction History</h2>
+                <div id="transactions-list" class="transactions-list">
+                    <p class="loading">Loading transactions...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+
+    <!-- Related to Css -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>  
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true,
+        mirror: false
+    });
+</script>
+</body>
+</html>
