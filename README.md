@@ -252,12 +252,6 @@ Contributions are welcome! Here's how you can help:
 
 ---
 
-## 📝 **License**
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
 ## 🙏 **Acknowledgments**
 
 - Firebase PHP-JWT library for authentication
@@ -277,6 +271,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
   
-**Made with ❤️ **
+  Made with ❤️ 
 
 </div>
