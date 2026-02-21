@@ -108,14 +108,25 @@ Password: password123
 <div align="center">
   
 ### 🔐 **Login Page**
-![Login Page](<img width="1882" height="962" alt="image" src="https://github.com/user-attachments/assets/358a2d90-8536-43c0-8005-855da40d16ee" />
+![Login Page](![Screenshot 2026-02-21 135720](https://github.com/user-attachments/assets/ae466c84-e449-45ae-9ea7-e10c3b520b9a)
+
+
+
 )
 
 ### 📊 **Dashboard Overview**
-![Dashboard](https://drive.google.com/file/d/1BzdjnxHj5tdfTRRayBPctsiqxT_bGL8n/view?usp=sharing)
+![Dashboard](
+![Screenshot 2026-02-21 135825](https://github.com/user-attachments/assets/06907f75-74b0-482a-b049-0d7fea9621e5)
+
+
+)
 
 ### 💳 **Virtual Cards**
-![Virtual Cards](https://drive.google.com/file/d/13hb-bEvTHFc1B2iY_yZUYG11viUFPu4z/view?usp=sharing)
+![Virtual Cards](
+![Screenshot 2026-02-21 140034](https://github.com/user-attachments/assets/c4278d9d-e035-4c6b-91ea-885b23d3484e)
+
+
+)
 
 </div>
 
@@ -255,15 +266,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 📞 **Contact**
-
 <div align="center">
-
-
-
-**Have questions?** Open an issue or reach out!
-
----
 
 ### ⭐ **If you like this project, don't forget to give it a star!** ⭐
 
@@ -273,6 +276,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
   
-**Made with ❤️ for the developer community**
+**Made with ❤️ **
 
 </div>
