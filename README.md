@@ -108,13 +108,14 @@ Password: password123
 <div align="center">
   
 ### 🔐 **Login Page**
-![Login Page](https://via.placeholder.com/800x400?text=Login+Page+Screenshot)
+![Login Page](<img width="1882" height="962" alt="image" src="https://github.com/user-attachments/assets/358a2d90-8536-43c0-8005-855da40d16ee" />
+)
 
 ### 📊 **Dashboard Overview**
-![Dashboard](https://via.placeholder.com/800x400?text=Dashboard+Screenshot)
+![Dashboard](https://drive.google.com/file/d/1BzdjnxHj5tdfTRRayBPctsiqxT_bGL8n/view?usp=sharing)
 
 ### 💳 **Virtual Cards**
-![Virtual Cards](https://via.placeholder.com/800x400?text=Virtual+Cards+Screenshot)
+![Virtual Cards](https://drive.google.com/file/d/13hb-bEvTHFc1B2iY_yZUYG11viUFPu4z/view?usp=sharing)
 
 </div>
 
