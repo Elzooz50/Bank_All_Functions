@@ -61,6 +61,11 @@ CREATE TABLE IF NOT EXISTS loans (
     amount DECIMAL(10,2) NOT NULL,
     purpose TEXT,
     status ENUM('pending', 'approved', 'rejected', 'paid') DEFAULT 'pending',
+    interest_rate DECIMAL(5,2) DEFAULT 5.00,
+    total_amount DECIMAL(15,2),
+    remaining_amount DECIMAL(15,2),
+    approved_at DATETIME NULL,
+    due_date DATETIME NULL;
     request_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     approval_date TIMESTAMP NULL,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
