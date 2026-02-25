@@ -1,6 +1,6 @@
 <?php
 require_once "config.php";
-require_once "auth_middleware.php";
+require_once "vendor/autoload.php";
 
 $data = json_decode(file_get_contents("php://input"), true);
 
